@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibhas | Engineering & Coding</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0a0a;
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid #222;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 8%;
+            background: linear-gradient(135deg, #0a0a0a, #151515);
+        }
+
+        .hero p:first-child {
+            color: #888;
+            letter-spacing: 3px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            color: #aaa;
+            font-weight: normal;
+            max-width: 600px;
+        }
+
+        .section {
+            padding: 90px 8%;
+        }
+
+        .section h2 {
+            font-size: 38px;
+            margin-bottom: 40px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #111;
+            border: 1px solid #222;
+            padding: 30px;
+            border-radius: 12px;
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #444;
+        }
+
+        .card .icon {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 18px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            background: white;
+            color: black;
+        }
+
+        .project-detail {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .project-detail h3 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .project-subtitle {
+            color: #888;
+            margin-bottom: 25px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #222;
+            background: #111;
+            margin-bottom: 35px;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .article {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 35px;
+        }
+
+        .article h4 {
+            font-size: 22px;
+            margin: 25px 0 8px;
+        }
+
+        .article h4:first-child {
+            margin-top: 0;
+        }
+
+        .article p {
+            color: #aaa;
+            max-width: 850px;
+        }
+
+        .tag {
+            display: inline-block;
+            color: #aaa;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 5px 12px;
+            margin: 0 6px 8px 0;
+            font-size: 13px;
+        }
+
+        .process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .process-card {
+            padding: 25px;
+            background: #111;
+            border-radius: 10px;
+            border: 1px solid #222;
+        }
+
+        .process-card span {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .process-card h3 {
+            margin: 10px 0;
+        }
+
+        .process-card p {
+            color: #999;
+        }
+
+        .about {
+            max-width: 750px;
+            color: #aaa;
+            font-size: 18px;
+        }
+
+        footer {
+            padding: 40px 8%;
+            border-top: 1px solid #222;
+            color: #666;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 14px;
+            }
+
+            .section,
+            .hero {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .article {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="logo">V.</div>
+
+        <nav>
+            <a href="#projects">Projects</a>
+            <a href="#process">Process</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <p>ENGINEERING × CODE × CREATIVITY</p>
+
+        <h1>Building things.<br>Learning by doing.</h1>
+
+        <h2>
+            A student portfolio documenting projects in engineering,
+            coding, game development, and technology.
+        </h2>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+
+        <h2>Projects</h2>
+
+        <div class="projects">
+
+            <!-- ROBLOX -->
+            <div class="card">
+
+                <div class="icon">⌨️</div>
+
+                <h3>Roblox Development</h3>
+
+                <p>
+                    Game development, scripting, animations,
+                    gameplay systems, and experiments built in Roblox Studio.
+                </p>
+
+                <a class="button" href="#acceleration">
+                    View Project
+                </a>
+
+            </div>
+
+
+            <!-- ENGINEERING -->
+            <div class="card">
+
+                <div class="icon">⚙️</div>
+
+                <h3>Engineering Projects</h3>
+
+                <p>
+                    Physical builds, design experiments,
+                    prototypes, and engineering challenges.
+                </p>
+
+                <a class="button" href="#">
+                    View Projects
+                </a>
+
+            </div>
+
+
+            <!-- WEB -->
+            <div class="card">
+
+                <div class="icon">🌐</div>
+
+                <h3>Web Projects</h3>
+
+                <p>
+                    Websites and applications created while
+                    learning HTML, CSS, JavaScript, and web development.
+                </p>
+
+                <a class="button" href="#">
+                    View Projects
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURED ROBLOX PROJECT -->
+    <section class="section" id="acceleration">
+
+        <div class="project-detail">
+
+            <h2>Featured Project</h2>
+
+            <h3>Roblox Character Acceleration System</h3>
+
+            <p class="project-subtitle">
+                A Roblox Studio experiment focused on movement, acceleration,
+                scripting, and testing.
+            </p>
+
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/3-keRx6mDWo"
+                    title="Roblox Acceleration System Project"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="article">
+
+                <div>
+                    <span class="tag">Roblox Studio</span>
+                    <span class="tag">Lua</span>
+                    <span class="tag">Game Development</span>
+                    <span class="tag">Movement System</span>
+                </div>
+
+                <h4>Project Goal</h4>
+                <p>
+                    The goal of this project was to experiment with a custom
+                    acceleration system in Roblox Studio and understand how
+                    movement can be controlled through scripting.
+                </p>
+
+                <h4>What I Built</h4>
+                <p>
+                    I created and tested an acceleration system that changes
+                    how the character reaches and maintains movement speed.
+                    I tested the system in Roblox Studio and adjusted the
+                    behavior while developing it.
+                </p>
+
+                <h4>Development Process</h4>
+                <p>
+                    I started with the movement idea, wrote the script,
+                    tested it in Roblox Studio, and made changes based on
+                    how the movement felt during testing. I also recorded
+                    the development process to document the project.
+                </p>
+
+                <h4>What I Learned</h4>
+                <p>
+                    This project helped me practice Lua scripting, debugging,
+                    testing gameplay systems, and thinking about how code
+                    can control movement in a game.
+                </p>
+
+                <h4>Next Steps</h4>
+                <p>
+                    I could improve the system further by experimenting with
+                    different acceleration values, deceleration, movement
+                    states, and additional gameplay mechanics.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROCESS -->
+    <section class="section" id="process">
+
+        <h2>How I Build</h2>
+
+        <div class="process">
+
+            <div class="process-card">
+                <span>01</span>
+                <h3>Idea</h3>
+                <p>
+                    Start with an idea, problem, or experiment
+                    I want to explore.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <span>02</span>
+                <h3>Build</h3>
+                <p>
+                    Design, code, test, and improve the project.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <span>03</span>
+                <h3>Document</h3>
+                <p>
+                    Record the process, create videos,
+                    and explain how the project was made.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <span>04</span>
+                <h3>Learn</h3>
+                <p>
+                    Identify what worked, what failed,
+                    and what I would improve next time.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+
+        <h2>About</h2>
+
+        <p class="about">
+            I'm a high school student interested in engineering, coding,
+            game development, and building things.
+            This website documents the projects I'm working on
+            and the skills I'm developing.
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Vibhas · Built from scratch
+    </footer>
+
+</body>
+</html>
